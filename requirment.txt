@@ -1,0 +1,4 @@
+1.Design a homepage to show the available products.
+2.A Category/Collection page where a particular type of product can be displayed.
+3.A page where the items that are added to the cart can be displayed.
+4.Checkout page where the users can place the order.
