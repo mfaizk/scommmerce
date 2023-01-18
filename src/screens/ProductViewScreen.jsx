@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useCartStore from "../store/cart_store";
 const ProductViewScreen = () => {
   const [isAddedToCart, setisAddedToCart] = useState(false);
   const location = useLocation();
   const data = location.state.data;
   const cartData = useCartStore((s) => s.cart);
-
+  const addItemToCart = useCartStore((s) => s.addItem);
+  const nav = useNavigate();
   useEffect(() => {
     if (cartData.findIndex((e) => e.id == data.id) != -1) {
       setisAddedToCart(true);
@@ -51,7 +52,9 @@ const ProductViewScreen = () => {
             <>
               <button
                 className="flex  h-[60px] min-w-full items-center justify-center text-xl rounded-2xl bg-[#6EC72D]  transition-all ease-in-out delay-300 hover:bg-[#6dc72d98] hover:rounded-full duration-300"
-                onClick={() => {}}
+                onClick={() => {
+                  nav("/cart");
+                }}
               >
                 Go To Cart
               </button>
@@ -62,6 +65,7 @@ const ProductViewScreen = () => {
                 className="flex  h-[60px] min-w-full items-center justify-center text-xl rounded-2xl bg-[#C7C11A]  transition-all ease-in-out delay-300 hover:bg-[#c7c11aa1] hover:rounded-full duration-300"
                 onClick={() => {
                   //Add To cart function
+                  addItemToCart(data);
                   setisAddedToCart(!isAddedToCart);
                 }}
               >

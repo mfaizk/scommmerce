@@ -6,6 +6,15 @@ const HomeScreen = () => {
   const data = useDataStore((state) => state.data);
   const nav = useNavigate();
 
+  if (data == []) {
+    return (
+      <div className="container mx-auto h-[500px] w-[500px] flex items-center justify-center flex-col p-20">
+        <div id="ani" className="h-[500px]"></div>
+        <h1 className="text-2xl text-[#242B2E]">No data found</h1>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Hero Section start */}
