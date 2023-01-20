@@ -35,23 +35,35 @@ const ProductViewScreen = () => {
       
       "
         >
-          <h3>Category: {data.category}</h3>
-          <h3>Product Name :{data.title}</h3>
-          <h3 className="mt-2">
+          <h3 className="text-[#242B2E] font-semibold text-2xl ">
+            Category:{" "}
+            <span className="text-white font-normal text-sm">
+              {data.category}
+            </span>{" "}
+          </h3>
+          <h3 className="text-[#242B2E] font-semibold text-2xl">
+            Product Name:{" "}
+            <span className="text-white font-normal text-sm">{data.title}</span>{" "}
+          </h3>
+          <h3 className="text-[#242B2E] font-semibold text-2xl">
+            Description:{" "}
+            <span className="text-white font-normal text-sm">
+              {data.description}
+            </span>{" "}
+          </h3>
+          <h3 className="mt-2 text-[#242B2E] font-semibold text-2xl">
             Rating:{" "}
-            <span className="text-[#A77B06] font-semibold text-md">
-              {data.rating.rate}
-            </span>
+            <span className="text-[#A77B06]  text-sm">{data.rating.rate}</span>
           </h3>
           <h3 className=" text-2xl mt-2">₹{data.price}</h3>
-          <button className="flex h-[60px] min-w-full   items-center justify-center text-xl rounded-2xl bg-[#330076a4]  transition-all ease-in-out delay-300 hover:bg-[#330076] hover:rounded-full duration-300  ">
+          <button className="flex h-[60px] sm:p-2 min-w-full   items-center justify-center text-xl rounded-2xl bg-[#330076a4]  transition-all ease-in-out delay-300 hover:bg-[#330076] hover:rounded-full duration-300  ">
             Buy Now
           </button>
 
           {isAddedToCart ? (
             <>
               <button
-                className="flex  h-[60px] min-w-full items-center justify-center text-xl rounded-2xl bg-[#6EC72D]  transition-all ease-in-out delay-300 hover:bg-[#6dc72d98] hover:rounded-full duration-300"
+                className="flex sm:p-2 h-[60px] min-w-full items-center justify-center text-xl rounded-2xl bg-[#6EC72D]  transition-all ease-in-out delay-300 hover:bg-[#6dc72d98] hover:rounded-full duration-300"
                 onClick={() => {
                   nav("/cart");
                 }}
@@ -62,7 +74,7 @@ const ProductViewScreen = () => {
           ) : (
             <>
               <button
-                className="flex  h-[60px] min-w-full items-center justify-center text-xl rounded-2xl bg-[#C7C11A]  transition-all ease-in-out delay-300 hover:bg-[#c7c11aa1] hover:rounded-full duration-300"
+                className="flex sm:p-2  h-[60px] min-w-full items-center justify-center text-xl rounded-2xl bg-[#C7C11A]  transition-all ease-in-out delay-300 hover:bg-[#c7c11aa1] hover:rounded-full duration-300"
                 onClick={() => {
                   //Add To cart function
                   addItemToCart(data);
