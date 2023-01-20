@@ -2,6 +2,11 @@ import React, { useEffect } from "react";
 import useDataStore from "../store/data_store";
 import heroImage from "../assets/buy.svg";
 import { useNavigate } from "react-router-dom";
+import { GiJewelCrown } from "react-icons/gi";
+import { FcElectronics } from "react-icons/fc";
+import { FaMale, FaFemale } from "react-icons/fa";
+import { BsFillWalletFill } from "react-icons/bs";
+import { category } from "../fakeApiData/category";
 const HomeScreen = () => {
   const data = useDataStore((state) => state.data);
   const nav = useNavigate();
@@ -43,6 +48,9 @@ const HomeScreen = () => {
         to-[#00e06a]
         w-[200px] p-3 rounded-md transition-all ease-in-out delay-200 text-white hover:invert duration-200
         "
+            onClick={() => {
+              nav("/category/all");
+            }}
           >
             Browse Products
           </button>
@@ -55,36 +63,74 @@ const HomeScreen = () => {
 
       {/* Heading-Start */}
       <div className="container mx-auto flex items-center justify-start bg-gradient-to-r from-[#350078] text-white p-5 mt-5 text-xl">
-        Products
+        Categories
       </div>
       {/* Heading-ENd */}
       {/* Product Section Start */}
       <div className=" container mx-auto flex justify-center items-center  font-serif flex-wrap  gap-4 bg-[#ffffff]">
-        {/* Card-Start */}
-        {data.map((e, i) => (
+        {/* Category Data-start */}
+        <div className="container mx-auto flex flex-row justify-center sm:justify-between items-center  mt-5 sm:p-5 flex-wrap gap-10 font-sans py-5">
           <div
-            className=" w-[370px] h-[400px] flex items-start justify-center px-3 flex-col shadow-sm transition ease-in-out delay-150 hover:shadow-2xl duration-200 border"
-            key={i}
+            className=" shadow-2xl w-[300px] h-[100px] rounded-full p-5 flex flex-row items-center justify-center gap-4 text-white bg-gradient-to-r from-[#FF9F4A] to-[#FF3C83]"
             onClick={() => {
-              nav("/product", { state: { data: e } });
+              nav("/category/jewelery");
             }}
           >
-            <img src={e.image} alt="" className="h-52 px-10  self-center" />
-
-            <h3 className="text-[#758283] mt-2">
-              {String(e.category).toUpperCase()}
-            </h3>
-            <h3 className="text-[#6A1B4D] text-md">{e.title}</h3>
-            <h3 className="mt-2">
-              Rating:{" "}
-              <span className="text-[#A77B06] font-semibold text-md">
-                {e.rating.rate}
-              </span>
-            </h3>
-            <h3 className="text-[#2e0066] text-2xl mt-2">₹{e.price}</h3>
+            {/* Card Start */}
+            <GiJewelCrown size={60} />
+            <h1 className="text-xl sm:text-4xl">Jewelery</h1>
           </div>
-        ))}
-        {/* Card-END */}
+          {/* Card End */}
+          {/* Card Start */}
+
+          <div
+            className=" shadow-2xl w-[300px] h-[100px] rounded-full p-5 flex flex-row items-center justify-center gap-4 text-white bg-gradient-to-r from-[#00BC40] to-[#4C3AE3]"
+            onClick={() => {
+              nav("/category/electronics");
+            }}
+          >
+            <FcElectronics size={60} />
+            <h1 className="text-xl sm:text-4xl">Electronics</h1>
+          </div>
+          {/* Card End */}
+          {/* Card Start */}
+
+          <div
+            className=" shadow-2xl w-[300px] h-[100px] rounded-full p-5 flex flex-row items-center justify-center gap-4 text-white bg-gradient-to-r from-[#FF4331] to-[#D31A50] min-w-fit"
+            onClick={() => {
+              nav("/category/mens_clothing");
+            }}
+          >
+            <FaMale size={60} />
+            <h1 className="text-xl sm:text-4xl">Men's Clothing</h1>
+          </div>
+          {/* Card End */}
+          {/* Card Start */}
+
+          <div
+            className=" shadow-2xl w-[300px] h-[100px] rounded-full p-5 flex flex-row items-center justify-center gap-4 text-white bg-gradient-to-r from-[#E1A2B8] to-[#9F2BC1] min-w-fit"
+            onClick={() => {
+              nav("/category/womens_clothing");
+            }}
+          >
+            <FaFemale size={60} />
+            <h1 className="text-xl sm:text-4xl">Women's clothing</h1>
+          </div>
+          {/* Card End */}
+          {/* Card Start */}
+
+          <div
+            className=" shadow-2xl w-[300px] h-[100px] rounded-full p-5 flex flex-row items-center justify-center gap-4 text-white bg-gradient-to-r from-[#253898] to-[#5737D6] min-w-fit"
+            onClick={() => {
+              nav("/category/all");
+            }}
+          >
+            <BsFillWalletFill size={60} />
+            <h1 className="text-xl sm:text-4xl">All products</h1>
+          </div>
+          {/* Card End */}
+        </div>
+        {/* Category Data-end */}
       </div>
       {/* Product Section End */}
     </>

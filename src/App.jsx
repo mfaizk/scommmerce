@@ -8,34 +8,42 @@ import LoadingScreen from "./screens/LoadingScreen";
 import Header from "./screens/component/HomeScreenComponent/Header";
 import ProductViewScreen from "./screens/ProductViewScreen";
 import CartScreen from "./screens/CartScreen";
+import data from "./fakeApiData/data";
+import ShowByCatergoryScreen from "./screens/ShowByCatergoryScreen";
 
 const App = () => {
   const setData = useDataStore((state) => state.setData);
   const [isDataAvail, setisDataAvail] = useState("");
   const data = useDataStore((s) => s.data);
   useEffect(() => {
-    initialRun()
-      .then((d) => {
-        setData(d);
-        setisDataAvail(d);
-        console.log(d);
-      })
-      .catch((e) => {
-        isDataAvail("error");
-        toast.error(e.message || "Network Error");
-      });
+    setData(data);
+    setisDataAvail(true);
+    // NOTE:This commented code will work when original api will be added
+    // initialRun()
+    //   .then((d) => {
+    //     setData(d);
+    //     setisDataAvail(d);
+    //     console.log(d);
+    //   })
+    //   .catch((e) => {
+    //     isDataAvail("error");
+    //     toast.error(e.message || "Network Error");
+    //   });
   }, []);
 
-  const initialRun = async () => {
-    try {
-      const data = await axios.get(
-        "https://fakestoreapi.com/products?limit=20"
-      );
-      return data.data;
-    } catch (error) {
-      return error;
-    }
-  };
+  // if You want you can add api here i am adding data locally as placeholder because this api is public and taking too much time to load
+
+  // const initialRun = async () => {
+  //   try {
+  //     const data = await axios.get(
+  //       "https://fakestoreapi.com/products?limit=20"
+  //     );
+  //     return data.data;
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // };
+
   if (data == []) {
     return (
       <div className="container mx-auto h-[500px] w-[500px] flex items-center justify-center flex-col p-20">
@@ -57,6 +65,7 @@ const App = () => {
         <Route element={<HomeScreen />} path="/" />
         <Route element={<ProductViewScreen />} path="/product" />
         <Route element={<CartScreen />} path="/cart" />
+        <Route element={<ShowByCatergoryScreen />} path="/category/:category" />
       </Routes>
     </BrowserRouter>
   );

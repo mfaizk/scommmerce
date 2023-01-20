@@ -10,7 +10,12 @@ const Header = () => {
   const cartItems = useCartStore((s) => s.cart);
   return (
     <div className=" bg-[#6f00e6] min-h-[60px] flex items-center justify-between flex-row container mx-auto text-white font-serif px-3 sm:px-11 z-10">
-      <h1 className=" font-thin text-2xl">
+      <h1
+        className=" font-thin text-2xl cursor-grab"
+        onClick={() => {
+          nav("/");
+        }}
+      >
         store <span className="font-bold">Logo</span>
       </h1>
       {isMenuOpen ? (
@@ -44,6 +49,8 @@ const Header = () => {
           z-0
         "
           onClick={() => {
+            setTranslateValue("translate-y-[-150px]");
+            setisMenuOpen(!isMenuOpen);
             nav("/cart");
           }}
         >
