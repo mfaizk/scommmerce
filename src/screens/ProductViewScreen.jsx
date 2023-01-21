@@ -29,33 +29,33 @@ const ProductViewScreen = () => {
         </div>
         <div
           className="flex items-start justify-center flex-col
-      bg-[#6f00e6f1]  mx-auto sm:p-10 min-w-full sm:min-w-0 p-3 gap-5 mt-10 sm:mt-0
+      bg-[#6f00e6f1]  mx-auto sm:p-10 min-w-full sm:min-w-0 p-3 gap-3 mt-10 sm:mt-0
       shadow-2xl
       md:w-[500px] md:h-[500px]
       
       "
         >
-          <h3 className="text-[#242B2E] font-semibold text-2xl ">
+          <h3 className="text-[#242B2E] font-semibold text-xl ">
             Category:{" "}
             <span className="text-white font-normal text-sm">
               {data.category}
             </span>{" "}
           </h3>
-          <h3 className="text-[#242B2E] font-semibold text-2xl">
+          <h3 className="text-[#242B2E] font-semibold text-xl">
             Product Name:{" "}
             <span className="text-white font-normal text-sm">{data.title}</span>{" "}
           </h3>
-          <h3 className="text-[#242B2E] font-semibold text-2xl">
+          <h3 className="text-[#242B2E] font-semibold text-xl">
             Description:{" "}
             <span className="text-white font-normal text-sm">
-              {data.description}
+              {String(data.description).slice(0, 150)}
             </span>{" "}
           </h3>
-          <h3 className="mt-2 text-[#242B2E] font-semibold text-2xl">
+          <h3 className="mt-2 text-[#242B2E] font-semibold text-xl">
             Rating:{" "}
             <span className="text-[#A77B06]  text-sm">{data.rating.rate}</span>
           </h3>
-          <h3 className=" text-2xl mt-2">₹{data.price}</h3>
+          <h3 className=" text-xl mt-2">₹{data.price}</h3>
           <button className="flex h-[60px] sm:p-2 min-w-full   items-center justify-center text-xl rounded-2xl bg-[#330076a4]  transition-all ease-in-out delay-300 hover:bg-[#330076] hover:rounded-full duration-300  ">
             Buy Now
           </button>
