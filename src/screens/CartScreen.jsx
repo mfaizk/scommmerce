@@ -18,7 +18,7 @@ const CartScreen = () => {
 
   if (data.length === 0) {
     return (
-      <div className="container mx-auto h-[500px] w-[500px] flex items-center justify-center flex-col ">
+      <div className="container mx-auto flex items-center justify-center flex-col ">
         <div id="ani" className="h-[500px]"></div>
         <h1 className="text-2xl text-[#242B2E]">No item is present in cart</h1>
       </div>
@@ -39,7 +39,11 @@ const CartScreen = () => {
               className="w-[100%] lg:w-[550px] h-32 flex flex-row items-start lg:justify-start justify-center shadow-2xl rounded-md bg-gradient-to-r from-[#6f00e6] text-white"
               key={e.id}
             >
-              <img src={e.image} alt="" className="h-32 w-32 p-3" />
+              <img
+                src={e.image}
+                alt=""
+                className="h-24 w-24 sm:h-32 sm:w-32 p-3"
+              />
               <div className="self-center px-0 sm:px-4 gap-3 w-[500px] ">
                 <h3>
                   Catergory:{" "}
@@ -48,7 +52,10 @@ const CartScreen = () => {
                   </span>{" "}
                 </h3>
                 <h3>
-                  Title: <span className="text-[#333333]">{e.title}</span>{" "}
+                  Title:{" "}
+                  <span className="text-[#333333] text-sm">
+                    {String(e.title).slice(0, 50)}..
+                  </span>{" "}
                 </h3>
                 <h3>
                   Price:{" "}
